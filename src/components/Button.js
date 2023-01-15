@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { flexCenter, flexCenterEvenly } from "../style/flex";
+import { flexCenter, flexCenterBetween } from "../style/flex";
 
 const ButtonDiv = styled.div`
-  ${flexCenterEvenly}
+  ${flexCenterBetween}
 `;
 
 const Button = styled.button`
   ${flexCenter}
-  height: 32px;
+  height: 28px;
   padding: 0 16px;
   background-color: ${(props) => props.color || "gray"};
   // 이상하게 background-color는 props.background라 명시할 시 작동X

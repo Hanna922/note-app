@@ -13,10 +13,11 @@ const flexColumnCenter = css`
   justify-content: center;
 `;
 
-const flexCenterEvenly = css`
+const flexCenterBetween = css`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  // space-between vs space-evenly
 `;
 
-export { flexCenter, flexColumnCenter, flexCenterEvenly };
+export { flexCenter, flexColumnCenter, flexCenterBetween };
