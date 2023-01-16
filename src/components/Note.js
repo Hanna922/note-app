@@ -34,13 +34,17 @@ const Note = styled.div`
 const NoteContent = (props) => {
   const navigate = useNavigate();
   const noteList = props.noteList;
-  return (
-    <Note>
-     {/* onClick={() => {navigate("/detail/" + noteList[index].id)}} */}
-      <h3 className="noteTitle">Title</h3>
-      <h4 className="noteContent">Content</h4>
-    </Note>
-  );
+  if (localStorage.getItem("noteList") !== null) {
+    return noteList.map((val, index) => {
+      return (
+        <Note>
+          {/* onClick={() => {navigate("/detail/" + noteList[index].id)}} */}
+          <h3 className="noteTitle">{noteList[index].title}</h3>
+          <h4 className="noteContent">Content</h4>
+        </Note>
+      );
+    });
+  }
 };
 
 export { NoteContent };
