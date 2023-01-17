@@ -22,16 +22,34 @@ const NoteList = () => {
     getNoteList = JSON.parse(getNoteList);
   }
   const [noteList, setNoteList] = useState(getNoteList);
+  const [searchValue, setSearchValue] = useState("");
+
+  const getSearchValue = (search) => {
+    const getValue = search.target.value;
+    setSearchValue(getValue);
+    if (getValue !== "") {
+      const searchList = getNoteList.filter((searchItem) => {
+        if (searchItem.title.includes(searchValue)) {
+          return searchItem;
+        }
+      });
+      setNoteList(searchList);
+    } else {
+      setNoteList(getNoteList);
+    }
+  };
 
   return (
     <>
       <SearchDiv>
-        <SearchInput type="text" placeholder="Search.." />
+        <SearchInput
+          type="text"
+          placeholder="Search.."
+          onChange={getSearchValue}
+        />
       </SearchDiv>
       <NoteScroll>
-        <NoteContent
-          noteList={noteList}
-        />
+        <NoteContent noteList={noteList} />
       </NoteScroll>
       <ButtonDiv>
         <Button
