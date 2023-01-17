@@ -75,15 +75,27 @@ const CreateNote = () => {
     navigate("/");
   };
 
+  const editNote = () => {
+    const inputTitle = document.querySelector("#note-title");
+    const inputContent = document.querySelector("#note-content");
+    const index = getNoteList.findIndex((value) => value.id == paramsId);
+    getNoteList[index].title = inputTitle.value;
+    getNoteList[index].body = inputContent.value;
+    localStorage.setItem("noteList", JSON.stringify(getNoteList));
+    navigate("/");
+  };
+
   return (
     <>
       <NoteTitle
+        id="note-title"
         type="text"
         placeholder="Create Note Title"
         onChange={getTitle}
         value={noteTitle}
       />
       <NoteText
+        id="note-content"
         type="text"
         placeholder="Create Note Content"
         onChange={getContent}
@@ -101,10 +113,10 @@ const CreateNote = () => {
         </Button>
         <Button
           onClick={() => {
-            if (currentNote.id == paramsId) {
-              navigate("/");
-            } else {
+            if (paramsId === undefined) {
               createNote();
+            } else {
+              editNote();
             }
           }}
           color={color.aliceblue}

@@ -16,18 +16,16 @@ const Note = styled.div`
     margin-bottom: 0;
   }
   .noteTitle {
-    margin-bottom: 0px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 18px;
+    margin-bottom: 0%;
+    font-size: 20px;
     font-weight: 500;
+    font-family: 'Jua', sans-serif;
   }
   .noteContent {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 0%;
     font-size: 15px;
     font-weight: 100;
-    /* color: ${(props) => {
-      return props.theme.subTextColor;
-    }}; */
+    font-family: 'Jua', sans-serif;
   }
 `;
 
@@ -40,10 +38,15 @@ const NoteContent = (props) => {
         <Note
           onClick={() => {
             navigate("/create/" + noteList[index].id);
-          }} key = {index}
+          }}
+          key={index}
         >
           <h3 className="noteTitle">{noteList[index].title}</h3>
-          <h4 className="noteContent">{noteList[index].body}</h4>
+          <h4 className="noteContent">
+            {noteList[index].body.length > 56
+              ? `${noteList[index].body.slice(0, 56)}...`
+              : noteList[index].body}
+          </h4>
         </Note>
       );
     });
