@@ -29,7 +29,9 @@ const NoteList = () => {
         <SearchInput type="text" placeholder="Search.." />
       </SearchDiv>
       <NoteScroll>
-        <NoteContent noteList={noteList} />
+        <NoteContent
+          noteList={noteList}
+        />
       </NoteScroll>
       <ButtonDiv>
         <Button

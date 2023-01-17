@@ -13,8 +13,11 @@ function App() {
       <Container>
         <Title />
         <Routes>
-          <Route path="/" element={<NoteList />}></Route>
-          <Route path="/create" element={<CreateNote />}></Route>
+          <Route path="/" element={<NoteList />} />
+          <Route path="/create" element={<CreateNote />}>
+            <Route path=":paramsId" element={<CreateNote />} />
+            {/* 중첩된 절대 하위 경로는 모든 상위 경로의 결합된 경로로 시작 */}
+          </Route>
         </Routes>
       </Container>
     </div>

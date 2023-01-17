@@ -1,5 +1,5 @@
 import moment from "moment/moment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Button, ButtonDiv } from "../components/Button";
@@ -31,6 +31,7 @@ const NoteText = styled.textarea`
 
 const CreateNote = () => {
   const navigate = useNavigate();
+  const { paramsId } = useParams();
   // const id = moment().format("YYYY-MM-DD, hh:mm:ss");
   let getNoteList = localStorage.getItem("noteList");
   if (getNoteList === null) {
@@ -40,17 +41,29 @@ const CreateNote = () => {
   }
   const [noteTitle, setNoteTitle] = useState("");
   const [noteContent, setNoteContent] = useState("");
+  const currentNote = getNoteList.find((value) => value.id == paramsId);
+  // value.id === paramsId 로 두면 undefined
 
   const getTitle = (title) => {
     const input = title.target.value;
     setNoteTitle(input);
-    console.log(noteTitle);
   };
 
   const getContent = (content) => {
     const input = content.target.value;
     setNoteContent(input);
   };
+
+  useEffect(() => {
+    if (paramsId === undefined) {
+      //undefined를 먼저 check 해야 create button click 시 정상 작동
+      setNoteTitle("");
+      setNoteContent("");
+    } else {
+      setNoteTitle(currentNote.title);
+      setNoteContent(currentNote.body);
+    }
+  }, []);
 
   const createNote = () => {
     getNoteList.push({
@@ -68,11 +81,13 @@ const CreateNote = () => {
         type="text"
         placeholder="Create Note Title"
         onChange={getTitle}
+        value={noteTitle}
       />
       <NoteText
         type="text"
         placeholder="Create Note Content"
         onChange={getContent}
+        value={noteContent}
       />
       <ButtonDiv style={{ marginTop: "8px" }}>
         <Button
@@ -86,7 +101,11 @@ const CreateNote = () => {
         </Button>
         <Button
           onClick={() => {
-            createNote();
+            if (currentNote.id == paramsId) {
+              navigate("/");
+            } else {
+              createNote();
+            }
           }}
           color={color.aliceblue}
           letter={color.aliceblue_letter}

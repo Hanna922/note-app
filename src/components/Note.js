@@ -37,10 +37,13 @@ const NoteContent = (props) => {
   if (localStorage.getItem("noteList") !== null) {
     return noteList.map((val, index) => {
       return (
-        <Note>
-          {/* onClick={() => {navigate("/detail/" + noteList[index].id)}} */}
+        <Note
+          onClick={() => {
+            navigate("/create/" + noteList[index].id);
+          }} key = {index}
+        >
           <h3 className="noteTitle">{noteList[index].title}</h3>
-          <h4 className="noteContent">Content</h4>
+          <h4 className="noteContent">{noteList[index].body}</h4>
         </Note>
       );
     });
