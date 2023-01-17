@@ -119,7 +119,11 @@ const CreateNote = () => {
         </Button>
         <Button
           onClick={() => {
-            deleteNote();
+            if (paramsId === undefined) {
+              navigate("/");
+            } else {
+              deleteNote();
+            }
           }}
           style={{ marginLeft: "48%" }}
           color={color.tomato}

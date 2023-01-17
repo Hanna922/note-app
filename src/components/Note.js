@@ -22,9 +22,6 @@ const Note = styled.div`
     font-weight: 500;
     font-family: "Jua", sans-serif;
   }
-  .deleteButton {
-    /* align-items: "right"; */
-  }
   .noteContent {
     margin-top: 0%;
     font-size: 15px;
