@@ -4,13 +4,13 @@ const TitTxt = styled.h1`
   font-weight: 500;
   margin-top: 0%;
   margin-block-end: 0%;
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
 `;
 
 const SubTitTxt = styled.h2`
   font-weight: 400;
   font-size: 15px;
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
 `;
 
 const Title = function () {

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { flexColumnCenter } from "../style/flex";
 import { useNavigate } from "react-router-dom";
+import { Button, ButtonDiv } from "../components/Button";
 
 const Note = styled.div`
   ${flexColumnCenter}
@@ -12,20 +13,23 @@ const Note = styled.div`
   color: ${(props) => props.text_color || "black"};
   /* border: 1px solid gray; */
   border-radius: 8px;
-  &:last-child {
+  /* &:last-child {
     margin-bottom: 0;
-  }
+  } */
   .noteTitle {
     margin-bottom: 0%;
     font-size: 20px;
     font-weight: 500;
-    font-family: 'Jua', sans-serif;
+    font-family: "Jua", sans-serif;
+  }
+  .deleteButton {
+    /* align-items: "right"; */
   }
   .noteContent {
     margin-top: 0%;
     font-size: 15px;
     font-weight: 100;
-    font-family: 'Jua', sans-serif;
+    font-family: "Jua", sans-serif;
   }
 `;
 

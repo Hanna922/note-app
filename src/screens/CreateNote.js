@@ -43,6 +43,7 @@ const CreateNote = () => {
   const [noteContent, setNoteContent] = useState("");
   const currentNote = getNoteList.find((value) => value.id == paramsId);
   // value.id === paramsId 로 두면 undefined
+  const index = getNoteList.findIndex((value) => value.id == paramsId);
 
   const getTitle = (title) => {
     const input = title.target.value;
@@ -78,9 +79,14 @@ const CreateNote = () => {
   const editNote = () => {
     const inputTitle = document.querySelector("#note-title");
     const inputContent = document.querySelector("#note-content");
-    const index = getNoteList.findIndex((value) => value.id == paramsId);
     getNoteList[index].title = inputTitle.value;
     getNoteList[index].body = inputContent.value;
+    localStorage.setItem("noteList", JSON.stringify(getNoteList));
+    navigate("/");
+  };
+
+  const deleteNote = () => {
+    getNoteList.splice(index, 1);
     localStorage.setItem("noteList", JSON.stringify(getNoteList));
     navigate("/");
   };
@@ -110,6 +116,16 @@ const CreateNote = () => {
           letter={color.tomato_letter}
         >
           Back
+        </Button>
+        <Button
+          onClick={() => {
+            deleteNote();
+          }}
+          style={{ marginLeft: "48%" }}
+          color={color.tomato}
+          letter={color.tomato_letter}
+        >
+          Delete
         </Button>
         <Button
           onClick={() => {
