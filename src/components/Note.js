@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { flexColumnCenter } from "../style/flex";
 import { useNavigate } from "react-router-dom";
-import { Button, ButtonDiv } from "../components/Button";
 
 const Note = styled.div`
   ${flexColumnCenter}

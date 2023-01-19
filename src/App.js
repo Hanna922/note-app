@@ -4,10 +4,8 @@ import { Container } from "./components/Container";
 import { Title } from "./components/Title";
 import { CreateNote } from "./screens/CreateNote";
 import { NoteList } from "./screens/NoteList";
-import { Button } from "./components/Button";
 
 function App() {
-  const navigate = useNavigate();
   return (
     <div className="App">
       <Container>

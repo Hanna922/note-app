@@ -1,4 +1,3 @@
-import moment from "moment/moment";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -32,7 +31,6 @@ const NoteText = styled.textarea`
 const CreateNote = () => {
   const navigate = useNavigate();
   const { paramsId } = useParams();
-  // const id = moment().format("YYYY-MM-DD, hh:mm:ss");
   let getNoteList = localStorage.getItem("noteList");
   if (getNoteList === null) {
     getNoteList = [];
@@ -43,7 +41,7 @@ const CreateNote = () => {
   const [noteContent, setNoteContent] = useState("");
   const currentNote = getNoteList.find((value) => value.id == paramsId);
   // value.id === paramsId 로 두면 undefined
-  const index = getNoteList.findIndex((value) => value.id == paramsId);
+  const index = getNoteList.findIndex((value) => value.id === paramsId);
 
   const getTitle = (title) => {
     const input = title.target.value;
