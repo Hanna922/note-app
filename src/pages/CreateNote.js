@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Button, ButtonDiv } from "../components/Button";
-import color from "./../style/color";
+import color from "../style/color";
 
 const NoteTitle = styled.input`
   width: 92%;
