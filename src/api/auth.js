@@ -1,19 +1,20 @@
 import API from "./main";
+import axios from "axios";
 import { setRefreshToken } from "./../storage/Coockie";
-import { set } from "immer/dist/internal";
 
 export const login = async ({ email, password }) => {
-  await API.post("/user/login", {
-    email,
-    password,
-  })
-    .then(function (response) {
+  await axios
+    .post("/user/login", {
+      email,
+      password,
+    })
+    .then((response) => {
       console.log(response);
       //   const accessToken = response.data.access_token;
-    //   if (response.status) {
-    //     setRefreshToken(response.data.refresh_token);
-    //     dispatchEvent(set(response.data.access_token));
-    //   }
+      //   if (response.status) {
+      //     setRefreshToken(response.data.refresh_token);
+      //     dispatchEvent(set(response.data.access_token));
+      //   }
       return response;
     })
     .catch(function (error) {
